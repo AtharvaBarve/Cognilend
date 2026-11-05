@@ -11,6 +11,47 @@ Guide: **Dr. V. N. Waghmare** · Groups: **G10** Core ML · **G12** Rules + DBMS
 
 Loan decisions are usually made either by rigid rule engines, which cannot adapt to non-standard but creditworthy applicants, or by opaque ML models, which are hard to explain and audit. CogniLend combines both: a forward-chaining policy rule layer handles hard eligibility and regulatory checks, and a constrained, interpretable decision tree handles the data-driven part. Every decision is confidence-scored, logged to a tamper-evident audit trail, and checked for fairness.
 
+## Novelty Features
+
+CogniLend introduces several features that extend beyond conventional rule-based and ML-driven loan prediction systems.
+1. Stress Twin Indicator
+- Simulates 1,000 possible financial scenarios over a 12-month period using Monte Carlo simulation.
+- Evaluates income drops, unexpected expenses, salary delays and combined financial stress.
+- Calculates shortfall probability, recovery time and a Financial Resilience Score (0–100).
+- Evaluates alternative loan terms to improve borrower affordability.
+- Operates independently as an advisory tool without directly influencing loan decisions.
+  
+2. Fairness Audit & Bias Diagnostics
+- Measures Disparate Impact across gender, age groups and dependent categories.
+- Uses the 80% fairness threshold and 95% bootstrap confidence intervals.
+- Compares fairness across rule-based, ML-based and complete decision pipelines.
+- Identifies potential bias through rule-ablation and proxy-feature experiments.
+- Includes synthetic bias-injection tests to validate bias detection.
+  
+3. Bayesian Confidence Estimation
+- Estimates prediction confidence using Bayesian Beta posterior distributions.
+- Generates 90% credible intervals to quantify prediction uncertainty.
+- Considers training sample support at individual decision-tree leaves.
+- Routes low-confidence predictions to human review.
+  
+4. Explainable AI (XAI)
+- Traces individual predictions through decision-tree paths.
+- Identifies the conditions influencing each loan decision.
+- Provides feature-level contributions to approval probability.
+- Highlights missing and imputed applicant information.
+  
+5. Tamper-Evident Audit Trail
+- Maintains decision records using SHA-256 hash chaining.
+- Links audit entries through previous-record hashes.
+- Detects record tampering and inconsistencies through chain verification.
+- Preserves decision traceability and accountability.
+  
+6. Hybrid Rule-ML Decision Engine
+- Combines forward-chaining policy rules with a constrained entropy-based Decision Tree.
+- Applies hard rules for immediate rejection of policy violations.
+- Routes soft-rule violations and uncertain predictions to human review.
+- Maintains explainable and traceable decision outcomes.
+
 Each application ends in one of three outcomes:
 
 | Decision | Meaning |
